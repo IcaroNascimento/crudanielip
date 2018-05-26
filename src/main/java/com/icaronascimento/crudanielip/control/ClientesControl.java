@@ -9,21 +9,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(value="/clientes")
+@RequestMapping(value = "/clientes")
 public class ClientesControl {
 
+
     @RequestMapping(method = RequestMethod.GET)
-    public List<Clientes> listarClientes(){
+    public List<Clientes> listarClientes() {
 
 
-        Clientes cliente1 = new Clientes(1,"25584447771","JoaoMoreira","joaomoreira@gmail.com","15/07/1992","Masculino","Solteiro","Ativo");
+        Clientes cliente1 = new Clientes(1, "25584447771", "JoaoMoreira", "joaomoreira@gmail.com", "15/07/1992", "Masculino", "Solteiro", "Ativo");
 
 
         List<Clientes> listaDeClientes = new ArrayList<>();
         listaDeClientes.add(cliente1);
 
         return listaDeClientes;
-        }
+    }
 
 
 }
