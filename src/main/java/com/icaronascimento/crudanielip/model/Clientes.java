@@ -1,26 +1,36 @@
 package com.icaronascimento.crudanielip.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Objects;
 
 @Entity
+@Table(name ="Clientes")
 public class Clientes implements Serializable {
-    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer id;
+    private long id;
+
+    @Column(name="cpf")
     private String cpf;
+
+    @Column(name="nome")
     private String nome;
+
+    @Column(name="email")
     private String email;
+
+    @Column(name="dataDeNascimento")
     private String dataDeNascimento;
+
+    @Column(name="sexo")
     private String sexo;
+
+    @Column(name="estadoCivil")
     private String estadoCivil;
+
+    @Column(name="status")
     private String status;
 
     public Clientes() {
@@ -37,11 +47,11 @@ public class Clientes implements Serializable {
         this.status = status;
     }
 
-    public Integer getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -99,19 +109,5 @@ public class Clientes implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Clientes)) return false;
-        Clientes clientes = (Clientes) o;
-        return Objects.equals(id, clientes.id);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id);
     }
 }

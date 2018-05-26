@@ -19,7 +19,6 @@ public class ClientesControl {
 
         Clientes cliente1 = new Clientes(1, "25584447771", "JoaoMoreira", "joaomoreira@gmail.com", "15/07/1992", "Masculino", "Solteiro", "Ativo");
 
-
         List<Clientes> listaDeClientes = new ArrayList<>();
         listaDeClientes.add(cliente1);
 
