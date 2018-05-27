@@ -2,11 +2,11 @@ package com.icaronascimento.crudanielip.model;
 
 
 import javax.persistence.*;
-import java.io.Serializable;
+
 
 @Entity
 @Table(name ="Clientes")
-public class Clientes implements Serializable {
+public class Clientes  {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -33,19 +33,6 @@ public class Clientes implements Serializable {
     @Column(name="status")
     private String status;
 
-    public Clientes() {
-    }
-
-    public Clientes(Integer id,String cpf, String nome, String email, String dataDeNascimento, String sexo, String estadoCivil, String status) {
-        this.id = id;
-        this.cpf = cpf;
-        this.nome = nome;
-        this.email = email;
-        this.dataDeNascimento = dataDeNascimento;
-        this.sexo = sexo;
-        this.estadoCivil = estadoCivil;
-        this.status = status;
-    }
 
     public long getId() {
         return id;

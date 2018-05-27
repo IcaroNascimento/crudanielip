@@ -1,30 +1,73 @@
-package com.icaronascimento.crudanielip.control;
+package com.icaronascimento.crudanielip.controller;
 
-import com.icaronascimento.crudanielip.model.Clientes;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.ArrayList;
 import java.util.List;
 
-@RestController
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.icaronascimento.crudanielip.model.Clientes;
+import com.icaronascimento.crudanielip.service.ClientesService;
+
+
+
+@Controller
 @RequestMapping(value = "/clientes")
-public class ClientesControl {
+public class ClientesController {
 
 
-    @RequestMapping(method = RequestMethod.GET)
-    public List<Clientes> listarClientes() {
+    @Autowired
+    ClientesService clientesService;
 
+    @RequestMapping(value="/list", method=RequestMethod.GET)
+    public ModelAndView list() {
+        ModelAndView model = new ModelAndView("clientes_list");
+        List<Clientes> clientesList = clientesService.getListarTodosOsClientes();
+        model.addObject("ClientesList", clientesList);
 
-        Clientes cliente1 = new Clientes(1, "25584447771", "JoaoMoreira", "joaomoreira@gmail.com", "15/07/1992", "Masculino", "Solteiro", "Ativo");
-
-
-        List<Clientes> listaDeClientes = new ArrayList<>();
-        listaDeClientes.add(cliente1);
-
-        return listaDeClientes;
+        return model;
     }
 
+    @RequestMapping(value="/addClientes/", method=RequestMethod.GET)
+    public ModelAndView addClientes() {
+        ModelAndView model = new ModelAndView();
 
+        Clientes Clientes = new Clientes();
+        model.addObject("ClientesForm", Clientes);
+        model.setViewName("Clientes_form");
+
+        return model;
+    }
+
+    @RequestMapping(value="/updateClientes/{id}", method=RequestMethod.GET)
+    public ModelAndView editClientes(@PathVariable long id) {
+        ModelAndView model = new ModelAndView();
+
+        Clientes Clientes = clientesService.getClientesPorId(id);
+        model.addObject("ClientesForm", Clientes);
+        model.setViewName("Clientes_form");
+
+        return model;
+    }
+
+    @RequestMapping(value="/saveClientes", method=RequestMethod.POST)
+    public ModelAndView save(@ModelAttribute("ClientesForm") Clientes clientes) {
+        clientesService.salvarOuAtualizarClientes(clientes);
+
+        return new ModelAndView("redirect:/Clientes/list");
+    }
+
+    @RequestMapping(value="/deleteClientes/{id}", method=RequestMethod.GET)
+    public ModelAndView delete(@PathVariable("id") long id) {
+        clientesService.deletarClientes(id);
+
+        return new ModelAndView("redirect:/Clientes/list");
+    }
 }
+
+
+
