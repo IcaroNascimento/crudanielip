@@ -27,7 +27,7 @@ public class ClientesController {
     public ModelAndView list() {
         ModelAndView model = new ModelAndView("clientes_list");
         List<Clientes> clientesList = clientesService.getListarTodosOsClientes();
-        model.addObject("ClientesList", clientesList);
+        model.addObject("clientesList", clientesList);
 
         return model;
     }
@@ -36,9 +36,9 @@ public class ClientesController {
     public ModelAndView addClientes() {
         ModelAndView model = new ModelAndView();
 
-        Clientes Clientes = new Clientes();
-        model.addObject("ClientesForm", Clientes);
-        model.setViewName("Clientes_form");
+        Clientes clientes = new Clientes();
+        model.addObject("clientesForm", clientes);
+        model.setViewName("clientes_form");
 
         return model;
     }
@@ -47,25 +47,25 @@ public class ClientesController {
     public ModelAndView editClientes(@PathVariable long id) {
         ModelAndView model = new ModelAndView();
 
-        Clientes Clientes = clientesService.getClientesPorId(id);
-        model.addObject("ClientesForm", Clientes);
-        model.setViewName("Clientes_form");
+        Clientes clientes = clientesService.getClientesPorId(id);
+        model.addObject("clientesForm", clientes);
+        model.setViewName("clientes_form");
 
         return model;
     }
 
     @RequestMapping(value="/saveClientes", method=RequestMethod.POST)
-    public ModelAndView save(@ModelAttribute("ClientesForm") Clientes clientes) {
+    public ModelAndView save(@ModelAttribute("clientesForm") Clientes clientes) {
         clientesService.salvarOuAtualizarClientes(clientes);
 
-        return new ModelAndView("redirect:/Clientes/list");
+        return new ModelAndView("redirect:/clientes/list");
     }
 
     @RequestMapping(value="/deleteClientes/{id}", method=RequestMethod.GET)
     public ModelAndView delete(@PathVariable("id") long id) {
         clientesService.deletarClientes(id);
 
-        return new ModelAndView("redirect:/Clientes/list");
+        return new ModelAndView("redirect:/clientes/list");
     }
 }
 
