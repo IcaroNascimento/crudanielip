@@ -20,7 +20,17 @@ public class ClientesController {
     @Autowired
     private ClientesService clientesService;
 
+
     @RequestMapping(value="/")
+    public ModelAndView home() {
+        ModelAndView model = new ModelAndView("clientes_home");
+        List<Clientes> clientes = clientesService.getListarTodosOsClientes();
+        model.addObject("clientesHome", clientes);
+
+        return model;
+    }
+
+    @RequestMapping(value="/listaDeClientes")
     public ModelAndView list() {
         ModelAndView model = new ModelAndView("clientes_list");
         List<Clientes> clientesList = clientesService.getListarTodosOsClientes();
@@ -45,8 +55,8 @@ public class ClientesController {
         ModelAndView model = new ModelAndView();
 
         Clientes clientes = clientesService.getClientesPorId(id);
-        model.addObject("clientesForm", clientes);
-        model.setViewName("clientes_form");
+        model.addObject("clientesFormAlterar", clientes);
+        model.setViewName("clientes_form_alterar");
 
         return model;
     }
@@ -55,14 +65,14 @@ public class ClientesController {
     public ModelAndView save(@ModelAttribute("clientesForm") Clientes clientes) {
         clientesService.salvarOuAtualizarClientes(clientes);
 
-        return new ModelAndView("redirect:/");
+        return new ModelAndView("redirect:/listaDeClientes");
     }
 
     @RequestMapping(value="/deleteClientes/{id}", method=RequestMethod.GET)
     public ModelAndView delete(@PathVariable("id") long id) {
         clientesService.deletarClientes(id);
 
-        return new ModelAndView("redirect:/");
+        return new ModelAndView("redirect:/listaDeClientes");
     }
 }
 

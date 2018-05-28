@@ -15,7 +15,6 @@ public class Clientes  {
     private long id;
 
     @Column(name="cpf")
-    @CPF(message = "CPF inválido!")
     private String cpf;
 
     @Column(name="nome")
@@ -33,8 +32,8 @@ public class Clientes  {
     @Column(name="estadoCivil")
     private String estadoCivil;
 
-    @Column(name="status")
-    private String status;
+    @Column(name="ativo")
+    private boolean ativo;
 
 
     public long getId() {
@@ -93,11 +92,12 @@ public class Clientes  {
         this.estadoCivil = estadoCivil;
     }
 
-    public String getStatus() {
-        return status;
+    public boolean isAtivo() {
+        return ativo;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
     }
+
 }

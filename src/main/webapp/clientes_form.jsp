@@ -50,10 +50,10 @@
 
         </div>
         <div class="form-group">
-            <label>Status</label>
-            <form:checkbox path="status" value="Ativo"/>Ativo
+            <label>Ativo</label>
+            <form:checkbox path="ativo" value="Ativo"/>
         </div>
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form:form>
 
 </div>
