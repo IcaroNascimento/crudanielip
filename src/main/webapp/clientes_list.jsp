@@ -11,38 +11,47 @@
     <script src="../../webjars/jquery/3.0.0/js/jquery.min.js"></script>
 </head>
 <body>
-<div class="container">
+<div class="container" style="margin-top: 3%;">
+
+    <spring:url value="/addClientes" var="addURL" />
+    <a class="btn btn-primary float-right" href="${addURL }" role="button" >Add New Cliente</a>
+
     <h2>Lista de Clientes List</h2>
     <table class="table table-striped">
         <thead>
-        <th scope="row">#ID</th>
-        <th scope="row">Title</th>
-        <th scope="row">Category</th>
+        <th scope="row">CPF</th>
+        <th scope="row">Nome</th>
+        <th scope="row">Email</th>
+        <th scope="row">Data de Nascimento</th>
+        <th scope="row">Sexo</th>
+        <th scope="row">Estado Civil</th>
+        <th scope="row">Status</th>
         <th scope="row">Update</th>
         <th scope="row">Delete</th>
         </thead>
         <tbody>
         <c:forEach items="${clientesList }" var="clientes" >
             <tr>
-                <td>${clientes.id }</td>
-                <td>${clientes.title }</td>
-                <td>${clientes.category }</td>
-                <td>${clientes.title }</td>
-                <td>${clientes.category }</td>
+                <td>${clientes.cpf }</td>
+                <td>${clientes.nome }</td>
+                <td>${clientes.email }</td>
+                <td>${clientes.dataDeNascimento }</td>
+                <td>${clientes.sexo }</td>
+                <td>${clientes.estadoCivil }</td>
+                <td>${clientes.status }</td>
                 <td>
-                    <spring:url value="/clientes/updateClientes/${clientes.id }" var="updateURL" />
+                    <spring:url value="updateClientes/${clientes.id}" var="updateURL" />
                     <a class="btn btn-primary" href="${updateURL }" role="button" >Update</a>
                 </td>
                 <td>
-                    <spring:url value="/clientes/deleteClientes/${clientes.id }" var="deleteURL" />
+                    <spring:url value="deleteClientes/${clientes.id}" var="deleteURL" />
                     <a class="btn btn-primary" href="${deleteURL }" role="button" >Delete</a>
                 </td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
-    <spring:url value="/clientes/addClientes/" var="addURL" />
-    <a class="btn btn-primary" href="${addURL }" role="button" >Add New Cliente</a>
+
 </div>
 </body>
 </html>

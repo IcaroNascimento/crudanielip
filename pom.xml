@@ -6,7 +6,7 @@
     <groupId>com.icaronascimento</groupId>
     <artifactId>crudanielip</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>crudanielip</name>
     <description>Implementação de um CRUD</description>
@@ -42,9 +42,9 @@
         </dependency>
 
         <dependency>
-                   <groupId>com.h2database</groupId>
-        <artifactId>h2</artifactId>
-               </dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -59,11 +59,24 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <!--<scope>provided</scope>-->
         </dependency>
 
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.jdt.core.compiler</groupId>
+            <artifactId>ecj</artifactId>
+            <version>4.6.1</version>
             <scope>provided</scope>
         </dependency>
 

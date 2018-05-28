@@ -13,17 +13,14 @@ import org.springframework.web.servlet.ModelAndView;
 import com.icaronascimento.crudanielip.model.Clientes;
 import com.icaronascimento.crudanielip.service.ClientesService;
 
-
-
 @Controller
-@RequestMapping(value = "/clientes")
 public class ClientesController {
 
 
     @Autowired
-    ClientesService clientesService;
+    private ClientesService clientesService;
 
-    @RequestMapping(value="/list", method=RequestMethod.GET)
+    @RequestMapping(value="/")
     public ModelAndView list() {
         ModelAndView model = new ModelAndView("clientes_list");
         List<Clientes> clientesList = clientesService.getListarTodosOsClientes();
@@ -32,7 +29,7 @@ public class ClientesController {
         return model;
     }
 
-    @RequestMapping(value="/addClientes/", method=RequestMethod.GET)
+    @RequestMapping(value="/addClientes", method=RequestMethod.GET)
     public ModelAndView addClientes() {
         ModelAndView model = new ModelAndView();
 
@@ -58,14 +55,14 @@ public class ClientesController {
     public ModelAndView save(@ModelAttribute("clientesForm") Clientes clientes) {
         clientesService.salvarOuAtualizarClientes(clientes);
 
-        return new ModelAndView("redirect:/clientes/list");
+        return new ModelAndView("redirect:/");
     }
 
     @RequestMapping(value="/deleteClientes/{id}", method=RequestMethod.GET)
     public ModelAndView delete(@PathVariable("id") long id) {
         clientesService.deletarClientes(id);
 
-        return new ModelAndView("redirect:/clientes/list");
+        return new ModelAndView("redirect:/");
     }
 }
 

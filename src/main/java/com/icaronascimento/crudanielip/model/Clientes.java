@@ -1,6 +1,8 @@
 package com.icaronascimento.crudanielip.model;
 
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import javax.persistence.*;
 
 
@@ -13,6 +15,7 @@ public class Clientes  {
     private long id;
 
     @Column(name="cpf")
+    @CPF(message = "CPF inválido!")
     private String cpf;
 
     @Column(name="nome")

@@ -28,8 +28,8 @@ public class ClientesServiceImpl implements ClientesService {
     }
 
     @Override
-    public void salvarOuAtualizarClientes(Clientes Clientes) {
-        clientesRepository.save(Clientes);
+    public void salvarOuAtualizarClientes(Clientes clientes) {
+        clientesRepository.save(clientes);
     }
 
     @Override
