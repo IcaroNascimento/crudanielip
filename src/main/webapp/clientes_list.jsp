@@ -16,8 +16,6 @@
     <spring:url value="/addClientes" var="addURL" />
     <a class="btn btn-primary float-right" href="${addURL}" role="button" >Cadastrar Novo Cliente </a>
 
-    <spring:url value="/" var="addURL" />
-    <a class="btn btn-primary float-right" href="${addURL}" role="button" >Voltar para tela inicial </a>
 
 
     <h2>Painel de Clientes</h2>
@@ -54,7 +52,8 @@
         </c:forEach>
         </tbody>
     </table>
-
+    <spring:url value="/" var="addURL" />
+    <a class="btn btn-primary float-left" href="${addURL}" role="button" >Voltar para Tela Inicial </a>
 </div>
 </body>
 </html>

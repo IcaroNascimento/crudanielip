@@ -81,6 +81,9 @@
         <button type="submit" class="btn btn-primary">Alterar</button>
     </form:form>
 
+    <spring:url value="/listaDeClientes" var="addURL" />
+    <a class="btn btn-primary float-right" href="${addURL}" role="button" >Voltar para o Painel de clientes </a>
+
 </div>
 </body>
 </html>

@@ -82,6 +82,10 @@
             <form:checkbox path="ativo" value="Ativo"/>
         </div>
         <button type="submit" class="btn btn-primary" >Cadastrar</button>
+
+        <spring:url value="/" var="addURL" />
+        <a class="btn btn-primary float-right" href="${addURL}" role="button" >Voltar para Tela Inicial </a>
+
     </form:form>
 
 </div>
