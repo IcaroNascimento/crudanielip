@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Clientes Form</title>
+    <title>Cadastro</title>
     <link href="../../webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
     <script src="../../webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="../../webjars/jquery/3.0.0/js/jquery.min.js"></script>
@@ -14,7 +14,7 @@
 <body>
 <div class="container">
     <spring:url value="/saveClientes" var="saveURL" />
-    <h2>Clientes</h2>
+    <h2>Cadastro de Clientes</h2>
     <form:form modelAttribute="clientesForm" method="post" action="${saveURL }" cssClass="form" >
         <form:hidden path="id"/>
         <div class="form-group">
@@ -35,15 +35,23 @@
         </div>
         <div class="form-group">
             <label>Sexo</label>
-            <form:input path="sexo" cssClass="form-control" id="sexo" />
+            <form:radiobutton path="sexo" value="Masculino"/>Masculino
+            <form:radiobutton path="sexo" value="Feminino"/>Feminino
         </div>
         <div class="form-group">
             <label>Estado Civil</label>
-            <form:input path="estadoCivil" cssClass="form-control" id="estadoCivil" />
+            <select id="estadoCivil" name="estadoCivil">
+                <option value="Solteiro">Solteiro</option>
+                <option value="Casado">Casado</option>
+                <option value="Separado">Separado</option>
+                <option value="Divorciado">Divorciado</option>
+                <option value="Viuvo">Viuvo</option>
+            </select>
+
         </div>
         <div class="form-group">
-            <label>status</label>
-            <form:input path="status" cssClass="form-control" id="status" />
+            <label>Status</label>
+            <form:checkbox path="status" value="Ativo"/>Ativo
         </div>
         <button type="submit" class="btn btn-primary">Save</button>
     </form:form>

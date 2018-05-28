@@ -14,9 +14,9 @@
 <div class="container" style="margin-top: 3%;">
 
     <spring:url value="/addClientes" var="addURL" />
-    <a class="btn btn-primary float-right" href="${addURL }" role="button" >Add New Cliente</a>
+    <a class="btn btn-primary float-right" href="${addURL}" role="button" >Cadastrar Novo Cliente </a>
 
-    <h2>Lista de Clientes List</h2>
+    <h2>Painel de Clientes</h2>
     <table class="table table-striped">
         <thead>
         <th scope="row">CPF</th>
@@ -26,8 +26,7 @@
         <th scope="row">Sexo</th>
         <th scope="row">Estado Civil</th>
         <th scope="row">Status</th>
-        <th scope="row">Update</th>
-        <th scope="row">Delete</th>
+
         </thead>
         <tbody>
         <c:forEach items="${clientesList }" var="clientes" >
@@ -41,11 +40,11 @@
                 <td>${clientes.status }</td>
                 <td>
                     <spring:url value="updateClientes/${clientes.id}" var="updateURL" />
-                    <a class="btn btn-primary" href="${updateURL }" role="button" >Update</a>
+                    <a class="btn btn-primary" href="${updateURL }" role="button" >Alterar Dados</a>
                 </td>
                 <td>
                     <spring:url value="deleteClientes/${clientes.id}" var="deleteURL" />
-                    <a class="btn btn-primary" href="${deleteURL }" role="button" >Delete</a>
+                    <a class="btn btn-primary" href="${deleteURL }" role="button" >Deletar Cliente</a>
                 </td>
             </tr>
         </c:forEach>
