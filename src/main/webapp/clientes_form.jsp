@@ -10,12 +10,39 @@
     <link href="../../webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
     <script src="../../webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="../../webjars/jquery/3.0.0/js/jquery.min.js"></script>
+    <script  type="text/javascript" >
+        function valida(){
+            if(document.getElementById("cpf").value == ""){
+                window.alert("Preencha o campo CPF");
+                document.getElementById("cpf").focus();
+                return false;
+            }
+            if(document.getElementById("nome").value == ""){
+                window.alert("Preencha o campo Nome");
+                document.getElementById("nome").focus();
+                return false;
+            }
+            if(document.getElementById("email").value == ""){
+                    window.alert("Preencha o campo Email");
+                    document.getElementById("email").focus();
+                return false;
+                }
+            if(document.getElementById("dataDeNascimento").value == ""){
+                window.alert("Preencha o campo Data De Nascimento");
+                document.getElementById("dataDeNascimento").focus();
+                return false;
+            }
+
+            return true;}
+
+    </script>
+
 </head>
 <body>
 <div class="container">
     <spring:url value="/saveClientes" var="saveURL" />
     <h2>Cadastro de Clientes</h2>
-    <form:form modelAttribute="clientesForm" method="post" action="${saveURL }" cssClass="form" >
+    <form:form modelAttribute="clientesForm" method="post" action="${saveURL }" cssClass="form" onsubmit="return valida();"  >
         <form:hidden path="id"/>
         <div class="form-group">
             <label>CPF</label>
@@ -35,12 +62,13 @@
         </div>
         <div class="form-group">
             <label>Sexo</label>
-            <form:radiobutton path="sexo" value="Masculino"/>Masculino
-            <form:radiobutton path="sexo" value="Feminino"/>Feminino
+            <input  name="sexo" type="radio" value="Masculino" />Masculino
+            <input  name="sexo"  type="radio" value="Feminino" />Feminino
         </div>
         <div class="form-group">
             <label>Estado Civil</label>
             <select id="estadoCivil" name="estadoCivil">
+                <option value="Escolha a opcao">Escolha a opcao...</option>
                 <option value="Solteiro">Solteiro</option>
                 <option value="Casado">Casado</option>
                 <option value="Separado">Separado</option>
@@ -53,7 +81,7 @@
             <label>Ativo</label>
             <form:checkbox path="ativo" value="Ativo"/>
         </div>
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <button type="submit" class="btn btn-primary" >Cadastrar</button>
     </form:form>
 
 </div>

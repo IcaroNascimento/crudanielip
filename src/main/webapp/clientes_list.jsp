@@ -42,7 +42,6 @@
                 <td>${clientesList.sexo }</td>
                 <td>${clientesList.estadoCivil }</td>
                 <td>${clientesList.ativo }</td>
-
                 <td>
                     <spring:url value="updateClientes/${clientesList.id}" var="updateURL" />
                     <a class="hyperlink" href="${updateURL }" role="link" >Alterar</a>

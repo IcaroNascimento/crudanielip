@@ -36,6 +36,5 @@ public class ClientesServiceImpl implements ClientesService {
     public void deletarClientes(long id) {
         clientesRepository.deleteById(id);
     }
-
 }
 

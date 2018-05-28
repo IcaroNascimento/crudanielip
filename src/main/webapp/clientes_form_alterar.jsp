@@ -10,12 +10,37 @@
     <link href="../../webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
     <script src="../../webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="../../webjars/jquery/3.0.0/js/jquery.min.js"></script>
+    <script  type="text/javascript" >
+        function valida() {
+        if (document.getElementById("cpf").value == "") {
+            window.alert("Preencha o campo CPF");
+            document.getElementById("cpf").focus();
+            return false;
+        }
+        if (document.getElementById("nome").value == "") {
+            window.alert("Preencha o campo Nome");
+            document.getElementById("nome").focus();
+            return false;
+        }
+        if (document.getElementById("email").value == "") {
+            window.alert("Preencha o campo Email");
+            document.getElementById("email").focus();
+            return false;
+        }
+        if (document.getElementById("dataDeNascimento").value == "") {
+            window.alert("Preencha o campo Data De Nascimento");
+            document.getElementById("dataDeNascimento").focus();
+            return false;
+        }
+    }
+
+    </script>
 </head>
 <body>
 <div class="container">
     <spring:url value="/saveClientes" var="saveURL" />
     <h2>Painel do Cliente</h2>
-    <form:form modelAttribute="clientesFormAlterar" method="post" action="${saveURL }" cssClass="form" >
+    <form:form modelAttribute="clientesFormAlterar" method="post" action="${saveURL }" cssClass="form" onsubmit="return valida();" >
         <form:hidden path="id"/>
         <div class="form-group">
             <label>CPF</label>

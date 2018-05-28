@@ -17,7 +17,7 @@
     <a class="btn btn-primary float-right" href="${addURL}" role="button" >Cadastrar Novo Cliente </a>
 
     <spring:url value="/listaDeClientes" var="addURL" />
-    <a class="btn btn-primary float-right" href="${addURL}" role="button" >Consultar Cliente </a>
+    <a class="btn btn-primary float-left" href="${addURL}" role="button" >Consultar Cliente </a>
 
 </div>
 </body>
